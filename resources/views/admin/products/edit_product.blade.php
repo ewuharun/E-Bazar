@@ -41,52 +41,18 @@
                   <input type="text" name="product_name" id="product_name" value="{{ $productDetails->product_name }}">
                 </div>
               </div>
-              <div class="control-group">
-                <label class="control-label">Product Code</label>
-                <div class="controls">
-                  <input type="text" name="product_code" id="product_code" value="{{ $productDetails->product_code }}">
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label">Product Color</label>
-                <div class="controls">
-                  <input type="text" name="product_color" id="product_color" value="{{ $productDetails->product_color }}">
-                </div>
-              </div>
+   
+              
               <div class="control-group">
                 <label class="control-label">Description</label>
                 <div class="controls">
-                  <textarea name="description">{{ $productDetails->description }}</textarea>
+                  <textarea name="description">{{ $productDetails->product_description }}</textarea>
                 </div>
               </div>
-              <div class="control-group">
-                <label class="control-label">Material & Care</label>
-                <div class="controls">
-                  <textarea name="care">{{ $productDetails->care }}</textarea>
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label">Sleeve</label>
-                <div class="controls">
-                  <select name="sleeve" class="form-control">
-                    <option value="">Select Sleeve</option>
-                    @foreach($sleeveArray as $sleeve)
-                      <option value="{{ $sleeve }}" @if(!empty($productDetails->sleeve) && $productDetails->sleeve==$sleeve) selected @endif>{{ $sleeve }}</option>
-                    @endforeach
-                  </select>  
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label">Pattern</label>
-                <div class="controls">
-                  <select name="pattern" class="form-control">
-                    <option value="">Select Pattern</option>
-                    @foreach($patternArray as $pattern)
-                      <option value="{{ $pattern }}" @if(!empty($productDetails->pattern) && $productDetails->pattern==$pattern) selected @endif>{{ $pattern }}</option>
-                    @endforeach
-                  </select>  
-                </div>
-              </div>
+
+
+
+              
               <div class="control-group">
                 <label class="control-label">Price</label>
                 <div class="controls">
@@ -94,9 +60,9 @@
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Weight (g)</label>
+                <label class="control-label">unit (kg/quantity)</label>
                 <div class="controls">
-                  <input type="text" name="weight" id="weight" value="{{ $productDetails->weight }}">
+                  <input type="text" name="weight" id="weight" value="{{ $productDetails->unit }}">
                 </div>
               </div>
               <div class="control-group">
@@ -107,44 +73,28 @@
                       <tr>
                         <td>
                           <input name="image" id="image" type="file">
-                          @if(!empty($productDetails->image))
-                            <input type="hidden" name="current_image" value="{{ $productDetails->image }}"> 
+                          @if(!empty($productDetails->image1))
+                            <input type="hidden" name="current_image" value="{{ $productDetails->image1 }}"> 
                           @endif
                         </td>
                         <td>
-                          @if(!empty($productDetails->image))
-                            <img style="width:30px;" src="{{ asset('/images/backend_images/product/small/'.$productDetails->image) }}"> | <a href="{{ url('/admin/delete-product-image/'.$productDetails->id) }}">Delete</a>
+                          @if(!empty($productDetails->image1))
+                            <img style="width:30px;" src="{{ asset('/images/backend_images/products/large/'.$productDetails->image1) }}"> | <a href="{{ url('/admin/delete-product-image/'.$productDetails->id) }}">Delete</a>
                           @endif
                         </td>
                       </tr>
                     </table>
                 </div>
               </div>
-              <div class="control-group">
-                <label class="control-label">Video</label>
-                <div class="controls">
-                  <div id="uniform-undefined">
-                    <input name="video" id="video" type="file">
-                    @if(!empty($productDetails->video))
-                      <input type="hidden" name="current_video" value="{{ $productDetails->video }}">
-                      <a target="_blank" href="{{ url('videos/'.$productDetails->video) }}">View</a> |
-                      <a href="{{ url('/admin/delete-product-video/'.$productDetails->id) }}">Delete</a>
-                    @endif
-                  </div>
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label">Feature Item</label>
-                <div class="controls">
-                  <input type="checkbox" name="feature_item" id="feature_item" @if($productDetails->feature_item == "1") checked @endif value="1">
-                </div>
-              </div>
+              
+              
               <div class="control-group">
                 <label class="control-label">Enable</label>
                 <div class="controls">
-                  <input type="checkbox" name="status" id="status" @if($productDetails->status == "1") checked @endif value="1">
+                  <input type="checkbox" name="status" id="status" @if($productDetails->availability == "1") checked @endif value="1">
                 </div>
               </div>
+              
               <div class="form-actions">
                 <input type="submit" value="Edit Product" class="btn btn-success">
               </div>

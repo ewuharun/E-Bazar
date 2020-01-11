@@ -36,6 +36,7 @@
                   <th>Product Name</th>
                 
                   <th>Price</th>
+                  <th>Unit</th>
                   <th>Image</th>
                   
                   <th>Actions</th>
@@ -50,18 +51,20 @@
                   <td class="center">{{ $product->product_name }}</td>
                   
                   <td class="center"> {{ $product->price }} Tk</td>
+                  <td class="center"> {{ $product->unit }} </td>
                   <td class="center">
                     @if(!empty($product->image1))
                     <img src="{{ asset('/images/backend_images/products/small/'.$product->image1) }}" style="width:90px;">
                     @endif
                   </td>
+
                   
                   <td class="center">
                     <a href="#myModal{{ $product->id }}" data-toggle="modal" class="btn btn-success btn-mini">View</a> 
                     <a href="{{ url('/admin/edit-product/'.$product->id) }}" class="btn btn-primary btn-mini">Edit</a> 
                     <a href="{{ url('/admin/add-attributes/'.$product->id) }}" class="btn btn-success btn-mini">Add</a>
                     <a href="{{ url('/admin/add-images/'.$product->id) }}" class="btn btn-info btn-mini">Add</a>
-                    <a id="delProduct" rel="{{ $product->id }}" rel1="delete-product" href="javascript:" class="btn btn-danger btn-mini deleteRecord">Delete</a>
+                    <a id="delProduct" rel="{{ $product->id }}" rel1="delete-product" href="{{ url('/admin/delete-product/'.$product->id) }}" class="btn btn-danger btn-mini deleteRecord">Delete</a>
  
                         <div id="myModal{{ $product->id }}" class="modal hide">
                           <div class="modal-header">
